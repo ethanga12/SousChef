@@ -1,0 +1,7 @@
+pip
+bs4
+httplib2
+distlib
+pandas
+selenium
+urllib3
