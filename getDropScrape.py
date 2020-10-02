@@ -89,7 +89,7 @@ for i in recipeLinks:
             zippedMeasurements.append(soup.find_all('dd', class_='InfoList-value')[i].get_text())
     for i in range(len(soup.find_all('dt', class_="InfoList-key"))):
         if i > 2:
-            zippedIngredients.append(soup.find_all('dd', class_='InfoList-value')[i].get_text())
+            zippedIngredients.append(soup.find_all('dt', class_='InfoList-key')[i].get_text())
     measurements.append(zippedMeasurements)
     ingredients.append(zippedIngredients)
 driver.quit()
