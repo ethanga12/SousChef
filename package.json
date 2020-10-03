@@ -1,0 +1,24 @@
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "description": "Controls packages we need installed for this to run",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanga12/cookbooktbd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethanga12/cookbooktbd/issues"
+  },
+  "homepage": "https://github.com/ethanga12/cookbooktbd#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
+  }
+}

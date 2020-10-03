@@ -35,6 +35,7 @@ for link in soup.find_all('div', class_="work-info"):
         links.append(link.find('a').get('href'))
 recipeLinks = []
 category = ['CATEGORY']
+
 for i in links:
     chrome_options = Options()
     chrome_options.add_argument("--diable-infobars")
@@ -88,7 +89,7 @@ for i in recipeLinks:
         else:
             zippedMeasurements.append(soup.find_all('dd', class_='InfoList-value')[i].get_text())
     for i in range(len(soup.find_all('dt', class_="InfoList-key"))):
-        if i > 2:
+        if i > 5:
             zippedIngredients.append(soup.find_all('dt', class_='InfoList-key')[i].get_text())
     measurements.append(zippedMeasurements)
     ingredients.append(zippedIngredients)
