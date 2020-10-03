@@ -3,14 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "my-package": "github:ethanga12/SousChef",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< Updated upstream
     "react-scripts": "3.4.3",
     "spoonacular_api": "^1.0.0"
+=======
+    "react-multi-carousel": "^2.5.5",
+    "react-scripts": "3.4.3",
+    "react-slick": "^0.27.11",
+    "semantic-ui-react": "^2.0.0",
+    "ua-parser-js": "^0.7.22",
+    "withstyles": "^1.0.3"
+>>>>>>> Stashed changes
   },
   "scripts": {
     "start": "react-scripts start",
