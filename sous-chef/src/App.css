@@ -1,3 +1,17 @@
+.recipe {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.recipeList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .App {
   text-align: center;
 }

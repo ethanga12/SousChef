@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class Recipes extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,7 @@ export default class Recipes extends Component {
 
     render() {
         const recipeItems = this.state.recipes.map(recipe => (
-            <div key={recipe.id}>
+            <div className="recipe" key={recipe.id}>
                 <h3>{recipe.title}</h3>
                 <p>{recipe.summary}</p>
             </div>
@@ -27,7 +28,7 @@ export default class Recipes extends Component {
         return (
             <div>
                 <h1>Recipes</h1>
-                {recipeItems}
+                <div className="recipeList">{recipeItems}</div>
             </div>
         )
     }
