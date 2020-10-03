@@ -5,18 +5,18 @@ import "react-multi-carousel/lib/styles.css";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3 // optional, default to 1.
+    items: 6,
+    slidesToSlide: 6 // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
+    items: 4,
+    slidesToSlide: 4 // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
   }
 };
 const images = [
@@ -34,19 +34,19 @@ const images = [
   "https://images.unsplash.com/photo-1550064824-8f993041ffd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 ];
 
-const recipes = [{ id: 1, title: "Travis Scott Borger", summary: "Yummy borgar mcdonal", image: "https://preview.redd.it/mo7do1igusk51.jpg?width=640&crop=smart&auto=webp&s=b7a971ee8a1a17f3f6f7d814151ff7133027c2fd" },
-{ id: 2, title: "thos beans", summary: "mmm im thinkin bout thos beans", image: "https://i.kym-cdn.com/entries/icons/original/000/019/104/6bf.jpg" },
-{ id: 3, title: "swag time react", summary: "we goin react mode", image: images[0] },
-{ id: 4, title: "test again test again", summary: "lorem ipsum dolor sit amet", image: images[1]},
-{ id: 5, title: "test test #5", summary: "just hold on we're going home", image: images[2]},
-{ id: 6, title: "not enjoying writing these", summary: "wish i had come up with a theme", image: images[3]},
-{ id: 7, title: "theming sample data is way more fun", summary: "alas, my sample data is gibberish", image: images[4]},
-{ id: 8, title: "i think this is probably enough now", summary: "honestly we'll see though", image: images[5]},
-{ id: 9, title: "a few more", summary: "lowkey though", image: images[6]},
-{ id: 10, title: "selected ambient javascript 85-92", summary: "stiff smile just like im aphex twin", image: images[7]},
-{ id: 11, title: "man oh man more data", summary: "pretty swag tho imo", image: images[8]},
-{ id: 12, title: "not going to lie wish there was a sample dataset", summary: "but alas my own format", image: images[9]},
-{ id: 13, title: "thank u to the repo that had an array of image urls", summary: "lowkey made this way easier", image: images[10]}
+const recipes = [{ id: 1, title: "Travis Scott Borger", summary: "Yummy borgar mcdonal lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: "https://preview.redd.it/mo7do1igusk51.jpg?width=640&crop=smart&auto=webp&s=b7a971ee8a1a17f3f6f7d814151ff7133027c2fd" },
+{ id: 2, title: "thos beans", summary: "mmm im thinkin bout thos beans test text lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: "https://i.kym-cdn.com/entries/icons/original/000/019/104/6bf.jpg" },
+{ id: 3, title: "swag time react", summary: "we goin react mode lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[0] },
+{ id: 4, title: "test again test again", summary: "lorem ipsum dolor sit amet lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[1]},
+{ id: 5, title: "test test #5", summary: "just hold on we're going home lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[2]},
+{ id: 6, title: "not enjoying writing these", summary: "wish i had come up with a theme lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[3]},
+{ id: 7, title: "theming sample data is way more fun", summary: "alas, my sample data is gibberish lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[4]},
+{ id: 8, title: "i think this is probably enough now", summary: "honestly we'll see though lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[5]},
+{ id: 9, title: "a few more", summary: "lowkey though lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[6]},
+{ id: 10, title: "selected ambient javascript 85-92", summary: "stiff smile just like im aphex twin lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[7]},
+{ id: 11, title: "man oh man more data", summary: "pretty swag tho imo lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[8]},
+{ id: 12, title: "not going to lie wish there was a sample dataset", summary: "but alas my own format lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[9]},
+{ id: 13, title: "thank u to the repo that had an array of image urls", summary: "lowkey made this way easier lorem ipsum lorem ipsum ayo lorem ipsum lorem ipsum", image: images[10]}
 ];
 
 const recipeItems = recipes.map(recipe => (
