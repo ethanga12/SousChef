@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+from firebase import firebase
 import time
 import csv
 import urllib
@@ -47,15 +48,24 @@ for i in links:
         category.append(soup.find('h1').get_text())
         if not link.find('a') == None:
             recipeLinks.append(link.find('a').get('href'))
-prepTime = ['PREP TIME']
-serves = ['SERVES']
-cals = ['CALORIES']
-ingredients = ['INGREDIENTS']
-measurements = ['MEASUREMENTS']
-tools = ['TOOLS']
-instructions = ['INSTRUCTIONS']
-descriptions = ['DESCRIPTIONS']
-name = ['NAME']
+# prepTime = ['PREP TIME']
+# serves = ['SERVES']
+# cals = ['CALORIES']
+# ingredients = ['INGREDIENTS']
+# measurements = ['MEASUREMENTS']
+# tools = ['TOOLS']
+# instructions = ['INSTRUCTIONS']
+# descriptions = ['DESCRIPTIONS']
+# name = ['NAME']
+prepTime = []
+serves = []
+cals = []
+ingredients = []
+measurements = []
+tools = []
+instructions = []
+descriptions = []
+name = []
 for i in recipeLinks:
     chrome_options = Options()
     chrome_options.add_argument("--diable-infobars")
@@ -93,8 +103,15 @@ driver.quit()
 # print(descriptions)
 # print(instructions)
 
-allRows = zip(name, prepTime, serves, cals, ingredients, measurements, descriptions, instructions)
-with open('GETDROP DATA.csv', 'w', newline='') as fp:
-    a = csv.writer(fp)
-    for row in allRows:
-        a.writerow(row)
+
+#add to firebase
+allRows = [{'name': a, 'prep_time': b, 'serves': c, 'calories': d, 'ingredients': e, 'measurements': f, 'descriptions': g, 'instructions': h} for a,b,c,d,e,f,g,h in zip(name, prepTime, serves, cals, ingredients, measurements, descriptions, instructions)]
+firebase = firebase.FirebaseApplication('https://cookbooktbd.firebaseio.com/', None)
+for row in allRows:
+    firebase.post('/recipes', row, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+
+# allRows = dict(zip(name, prepTime, serves, cals, ingredients, measurements, descriptions, instructions))
+# with open('GETDROP DATA.csv', 'w', newline='') as fp:
+#     a = csv.writer(fp)
+#     for row in allRows:
+#         a.writerow(row)
