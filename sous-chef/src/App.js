@@ -10,7 +10,10 @@ import SignUpPage from './components/SignUp';
 function App() {
   
   return (
-    <SignUpPage/>
+    <Router>
+      <SignUpPage/>
+    </Router>
+    
   //   <Router>
   //   <div>
   //     <Navigation />

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
- 
-import { withFirebase } from './Firebase';
+ import { withFirebase } from './Firebase';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import './../index.css';
+import * as ROUTES from './../constants/routes';
  
 const SignUpPage = () => (
   <div>
-    <h1>Sign Up</h1>
     <SignUpForm />
   </div>
 );
@@ -25,14 +28,17 @@ class SignUpFormBase extends Component {
   }
  
   onSubmit = event => {
-    const { email, password } = this.state;
- 
+    console.log("SUBMITTING");
+    const { username, email, password, error} = this.state;
+    console.log(email);
+    console.log(password);
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
       })
       .catch(error => {
+        console.log(error);
         this.setState({ error });
       });
  
@@ -40,45 +46,99 @@ class SignUpFormBase extends Component {
   };
  
   onChange = event => {
+    console.log(event.target.name);
+    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state.email);
   };
  
   render() {
     const { username, email, password, error } = this.state;
- 
-    const isInvalid = password === '' || email === '' || username == '';
- 
+
+    document.body.style = 'background: #EA655D'
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Username"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign up
-        </button>
- 
-        {error && <p>{error.message}</p>}
-      </form>
+    <Jumbotron style={jumbotronStyle}>
+          <h1 style={welcomeTextStyle}>Welcome to Sous Chef!</h1>
+          <Form style={formStyle} onSubmit={this.onSubmit}>
+            <Form.Group>
+                <Form.Label style={labelStyle}>Name</Form.Label>
+                <Form.Control name="username" onChange={this.onChange} style={inputStyle} type="username" />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label style={labelStyle}>Email address</Form.Label>
+              <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label style={labelStyle}>Password</Form.Label>
+              <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
+            </Form.Group>
+            <Button style={submitStyle} type="submit">
+              Sign Up
+            </Button>
+          </Form>
+          <p style={signinStyle}>Already a user? <Link style={linkStyle} to={ROUTES.SIGNIN}>Sign In</Link></p>
+    </Jumbotron>
+
     );
   }
+}
+
+const jumbotronStyle = {
+  marginTop: 96,
+  marginLeft: 400,
+  width:624,
+  height:528,
+  backgroundColor: 'white'
+};
+
+const welcomeTextStyle = {
+  color: '#EA655D',
+  textAlign: 'center',
+  fontFamily: 'Poppins',
+  marginTop: -20,
+  fontWeight: 'bold',
+  fontSize: 23
+};
+
+const formStyle = {
+  width: 300,
+  // textAlign: 'center',
+  fontFamily: 'Poppins',
+  marginTop: 30,
+  marginLeft: 130
+};
+
+const submitStyle = {
+  backgroundColor: '#EA655D',
+  outline: 'none !important',
+  fontFamily: 'Poppins',
+  marginLeft: 90,
+  width: 126,
+  marginTop: 30,
+  fontSize: 13
+};
+
+const inputStyle = {
+  backgroundColor: '#F3F3F4'
+};
+
+const signinStyle = {
+  textAlign: 'center',
+  fontSize: 13,
+  marginTop: 20,
+  fontFamily: 'Poppins',
+  color: 'gray'
+};
+
+const labelStyle = {
+  fontSize: 13,
+  fontWeight: 'bold'
+};
+
+const linkStyle = {
+  color: '#EA655D'
 }
 
 const SignUpForm = withFirebase(SignUpFormBase);
