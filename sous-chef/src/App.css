@@ -1,3 +1,33 @@
+.calendarDateContainer {
+  position: absolute;
+  background-color: #EA655D;
+  border-radius: 8px;
+  height: 55px;
+  width: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px  #EA655D solid;
+  z-index: 10000;
+}
+
+.calendarDateContainer:hover {
+  border: 2px white solid;
+}
+
+.calendarDate {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 200;
+  color: white;
+  font-size: 24px;
+  font-family: 'Open Sans';
+}
+
 .recipeSlide {
   background-color: white;
   margin-left: 5px;
@@ -30,13 +60,14 @@
 }
 
 .side-bar {
+  position: absolute;
   height: 100% !important;
   display: flex;
   flex-direction: column;
   border-right: 1px solid;
   border-radius: 0;
-  border-color: rgba(64, 194, 133, 0.693);
-  background-color: rgb(255, 255, 255);
+  border-color: #DA564E;
+  background-color: #DA564E;
   transition: 0.8s ease;
 }
 
@@ -47,8 +78,15 @@
   width: 10px;
   position: absolute;
   outline: none;
-  z-index: 1;
-  background-color: rgba(64, 194, 133, 0.693);
-  border-color: rgba(64, 194, 133, 0.693);
+  background-color: #DA564E;
+  border-color: #DA564E;
   border-left: 0;
+}
+
+#app-content {
+  z-index: 1;
+}
+
+#cal-sidebar {
+  z-index: -1;
 }

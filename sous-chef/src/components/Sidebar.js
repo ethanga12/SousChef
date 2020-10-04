@@ -24,13 +24,6 @@ export default function Sidebar({ width, height, children }) {
                     minHeight: height
                 }}
             >
-                <button
-                    onClick={() => toggleMenu()}
-                    className="toggle-menu"
-                    style={{
-                        transform: `translate(${width}px, 20vh)`
-                    }}
-                ></button>
                 <div className="content">{children}</div>
             </div>
         </React.Fragment>
