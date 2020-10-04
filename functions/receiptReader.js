@@ -6,8 +6,9 @@ async function quickstart() {
   const client = new vision.ImageAnnotatorClient();
   /**
    * TODO(developer): Uncomment the following line before running the sample.
+   *
    */
-  const fileName = '/Users/ethanasis/Desktop/SousChef/bigReceipt3.jpg';
+  const fileName = '/Users/ethanasis/Desktop/bigReceipt3.jpg';
 
   // Performs text detection on the local file
   const [result] = await client.textDetection(fileName);
