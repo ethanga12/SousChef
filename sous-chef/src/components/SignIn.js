@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
  import { withFirebase } from './Firebase';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './../index.css';
 import * as ROUTES from './../constants/routes';
-// import Food from './../food.svg';
  
 const SignInPage = () => (
   <div>
@@ -17,7 +16,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
+  error: true
 };
  
 class SignInFormBase extends Component {
@@ -28,15 +27,11 @@ class SignInFormBase extends Component {
   }
  
   onSubmit = event => {
-    const history = useHistory();
     const { username, email, password, error} = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
-        // this.setState({ ...INITIAL_STATE });
-        // return <Redirect to="/homepage"></Redirect>
-        // window.location.replace("/homepage");
-        // history.push("/homepage");
+        window.location("/")
       })
       .catch(error => {
         console.log(error);
@@ -47,14 +42,14 @@ class SignInFormBase extends Component {
   };
  
   onChange = event => {
-    console.log(event.target.name);
-    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state.email);
   };
  
   render() {
-    const { email, password, error } = this.state;
+    console.log(this.state.email)
+    console.log(this.state.password)
+    const invalid = this.state.email == '' || this.state.password == '';
+    console.log(invalid)
     return (
     <div style={ backgroundStyle }>
         <Jumbotron style={jumbotronStyle}>
@@ -68,7 +63,7 @@ class SignInFormBase extends Component {
                 <Form.Label style={labelStyle}>Password</Form.Label>
                 <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
                 </Form.Group>
-                <Button style={submitStyle} type="submit" >
+                <Button disabled={invalid} style={submitStyle} type="submit" >
                 <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
                 </Button>
             </Form>
@@ -134,7 +129,8 @@ const signupStyle = {
 
 const labelStyle = {
   fontSize: 13,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color: 'black'
 };
 
 const linkStyle = {

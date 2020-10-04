@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   username: '',
   email: '',
   password: '',
-  error: null,
+  error: true
 };
  
 class SignUpFormBase extends Component {
@@ -29,10 +29,11 @@ class SignUpFormBase extends Component {
  
   onSubmit = event => {
     const { username, email, password, error} = this.state;
+    
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        window.location("/");
       })
       .catch(error => {
         console.log(error);
@@ -48,8 +49,7 @@ class SignUpFormBase extends Component {
  
   render() {
     const { username, email, password, error } = this.state;
-
-    document.body.style = 'background: url("./../food.svg")'
+    const invalid = this.state.email == '' || this.state.password == '' || this.state.username == '';
     return (
       <div style={ backgroundStyle }>
         <Jumbotron style={jumbotronStyle}>
@@ -69,7 +69,7 @@ class SignUpFormBase extends Component {
                   <Form.Label style={labelStyle}>Password</Form.Label>
                   <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
                 </Form.Group>
-                <Button style={submitStyle} type="submit">
+                <Button disabled={invalid} style={submitStyle} type="submit">
                 <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign Up</Link>
                 </Button>
               </Form>
@@ -136,7 +136,8 @@ const signinStyle = {
 
 const labelStyle = {
   fontSize: 13,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color: 'black'
 };
 
 const linkStyle = {
