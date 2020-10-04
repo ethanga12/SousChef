@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './../index.css';
 import * as ROUTES from './../constants/routes';
+// import Food from './../food.svg';
  
 const SignInPage = () => (
   <div>
@@ -54,37 +55,43 @@ class SignInFormBase extends Component {
  
   render() {
     const { email, password, error } = this.state;
-    document.body.style = 'background: #EA655D'
     return (
-
-    <Jumbotron style={jumbotronStyle}>
-          <h1 style={welcomeTextStyle}>Good to see you back!</h1>
-          <Form style={formStyle} onSubmit={this.onSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label style={labelStyle}>Email address</Form.Label>
-              <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label style={labelStyle}>Password</Form.Label>
-              <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
-            </Form.Group>
-            <Button style={submitStyle} type="submit" >
-            <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
-            </Button>
-          </Form>
-          <p style={signupStyle}>Don't have an account yet? <Link style={linkStyle} to={ROUTES.SIGNUP}>Sign Up</Link></p>
-    </Jumbotron>
-
+    <div style={ backgroundStyle }>
+        <Jumbotron style={jumbotronStyle}>
+            <h1 style={welcomeTextStyle}>Good to see you back!</h1>
+            <Form style={formStyle} onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label style={labelStyle}>Email address</Form.Label>
+                <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                <Form.Label style={labelStyle}>Password</Form.Label>
+                <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
+                </Form.Group>
+                <Button style={submitStyle} type="submit" >
+                <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
+                </Button>
+            </Form>
+            <p style={signupStyle}>Don't have an account yet? <Link style={linkStyle} to={ROUTES.SIGNUP}>Sign Up</Link></p>
+        </Jumbotron>
+    </div>
     );
   }
 }
 
+const backgroundStyle = {
+    backgroundImage: 'url("/images/food.svg")',
+    backgroundSize: 'contain',
+    height: 900,
+    overflow: 'hidden'
+};
+
 const jumbotronStyle = {
-  marginTop: 96,
   marginLeft: 400,
   width:624,
   height:528,
-  backgroundColor: 'white'
+  backgroundColor: 'white',
+  marginTop: 96
 };
 
 const welcomeTextStyle = {

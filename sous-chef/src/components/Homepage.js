@@ -5,7 +5,6 @@ import CalendarDate from './CalendarDate';
 
 export default class Homepage extends Component {
     render() {
-        document.body.style = 'background: white'
         return (
         <div className="App">
             <div id="cal-sidebar">
