@@ -1,5 +1,4 @@
 .calendarDateContainer {
-  position: absolute;
   background-color: #EA655D;
   border-radius: 8px;
   height: 55px;
@@ -11,7 +10,6 @@
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px  #EA655D solid;
-  z-index: 10000;
 }
 
 .calendarDateContainer:hover {
@@ -60,7 +58,6 @@
 }
 
 .side-bar {
-  position: absolute;
   height: 100% !important;
   display: flex;
   flex-direction: column;
@@ -83,10 +80,13 @@
   border-left: 0;
 }
 
+/*
 #app-content {
-  z-index: 1;
+  position: absolute;
 }
+*/
 
 #cal-sidebar {
-  z-index: -1;
+  position: absolute;
+  z-index: 999999;
 }
