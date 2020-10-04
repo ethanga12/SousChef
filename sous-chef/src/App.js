@@ -14,16 +14,18 @@ import CalendarDate from './components/CalendarDate';
 import Responsive from './components/Responsive';
 import { Container, Row, Col, Tabs, Tab} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ContactForm from './components/dropzone'
+import Vision from './components/receiptReader'
 
 function App() {
-  
+
   return (
     <div className="App">
       <div id="cal-sidebar">
       </div>
         <Container>
           <Row>
-            <Col sm={2} lg={2} md={2} xs={2}>    
+            <Col sm={2} lg={2} md={2} xs={2}>
             <Sidebar width={100}>
           <CalendarDate key="35" date="10" />
           <CalendarDate key="36" date="11" />
@@ -45,6 +47,8 @@ function App() {
             </Tab>
             <Tab className="nav-tabs" eventKey="cv-upload" title="Upload Receipt">
 
+              <ContactForm/>
+              <Vision/>
             </Tab>
             <Tab className="nav-tabs" eventKey="sign-in" title="Sign In">
             <div id="fbase-router">

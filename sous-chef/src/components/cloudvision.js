@@ -1,4 +1,4 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 
 async function quickstart() {
   // Imports the Google Cloud client library

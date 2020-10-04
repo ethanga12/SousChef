@@ -1,4 +1,8 @@
-async function quickstart() {
+import React, { Component } from "react";
+
+export default class Vision extends React.Component {
+render() {
+  return(async function quickstart() {
   // Imports the Google Cloud client library
   const vision = require('@google-cloud/vision');
 
@@ -16,4 +20,6 @@ async function quickstart() {
   console.log('Text:');
   detections.forEach(text => console.log(text));
 
+});
+}
 }
