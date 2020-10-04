@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ethanga12/cookbooktbd#readme",
   "dependencies": {
+    "angularfire2": "^5.4.2",
+    "firebase": "^7.22.0",
+    "firebase-tools": "^8.11.2",
     "react": "^16.13.1",
     "react-redux": "^7.2.1",
     "reactfire": "^2.0.3",
