@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link} from 'react-router-dom';
  import { withFirebase } from './Firebase';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
@@ -28,10 +28,7 @@ class SignUpFormBase extends Component {
   }
  
   onSubmit = event => {
-    console.log("SUBMITTING");
     const { username, email, password, error} = this.state;
-    console.log(email);
-    console.log(password);
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -46,10 +43,7 @@ class SignUpFormBase extends Component {
   };
  
   onChange = event => {
-    console.log(event.target.name);
-    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state.email);
   };
  
   render() {
@@ -79,6 +73,7 @@ class SignUpFormBase extends Component {
             </Button>
           </Form>
           <p style={signinStyle}>Already a user? <Link style={linkStyle} to={ROUTES.SIGNIN}>Sign In</Link></p>
+          <p style={signinStyle}>By signing up you're agreeing to all T&C</p>
     </Jumbotron>
 
     );
@@ -104,7 +99,6 @@ const welcomeTextStyle = {
 
 const formStyle = {
   width: 300,
-  // textAlign: 'center',
   fontFamily: 'Poppins',
   marginTop: 30,
   marginLeft: 130

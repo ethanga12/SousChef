@@ -3,40 +3,20 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
+  Redirect
 } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import SignUpPage from './components/SignUp';
+import SignInPage from './components/SignIn';
 
 function App() {
   
   return (
     <Router>
-      <SignUpPage/>
+      <Route path={ROUTES.SIGNIN} component={SignInPage} />
+      <Route path={ROUTES.SIGNUP} component={SignUpPage} />
+      <Redirect from="/" to="/signin" />
     </Router>
-    
-  //   <Router>
-  //   <div>
-  //     <Navigation />
- 
-  //     <hr />
- 
-  //     <Route path={ROUTES.SIGNUP} component={SignUpPage} />
-  //   </div>
-  // </Router>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <Posts />
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 
