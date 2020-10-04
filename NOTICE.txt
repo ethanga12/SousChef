@@ -1,0 +1,5 @@
+Saw the apache license in the google cloud vision source code and followed the
+link. Although this is a hackathon project I wanted to make sure that I
+at least tried to credit people correctly! All boilerplate notations
+in the cloudvision api template are taken from the github cloudvision repo.
+Thanks to IVYHACKS for this amazing opportunity!
