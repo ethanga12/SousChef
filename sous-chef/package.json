@@ -12,6 +12,7 @@
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-multi-carousel": "^2.5.5",
     "react-scripts": "3.4.3",
     "spoonacular_api": "^1.0.0"
