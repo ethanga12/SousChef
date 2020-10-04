@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   username: '',
   email: '',
   password: '',
-  error: null,
+  error: true
 };
  
 class SignUpFormBase extends Component {
@@ -29,10 +29,11 @@ class SignUpFormBase extends Component {
  
   onSubmit = event => {
     const { username, email, password, error} = this.state;
+    
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        window.location("/");
       })
       .catch(error => {
         console.log(error);
@@ -48,37 +49,44 @@ class SignUpFormBase extends Component {
  
   render() {
     const { username, email, password, error } = this.state;
-
-    document.body.style = 'background: #EA655D'
+    const invalid = this.state.email == '' || this.state.password == '' || this.state.username == '';
     return (
-    <Jumbotron style={jumbotronStyle}>
-          <h1 style={welcomeTextStyle}>Welcome to Sous Chef!</h1>
-          <Form style={formStyle} onSubmit={this.onSubmit}>
-            <Form.Group>
-                <Form.Label style={labelStyle}>Name</Form.Label>
-                <Form.Control name="username" onChange={this.onChange} style={inputStyle} type="username" />
-            </Form.Group>
+      <div style={ backgroundStyle }>
+        <Jumbotron style={jumbotronStyle}>
+              <h1 style={welcomeTextStyle}>Welcome to Sous Chef!</h1>
+              <Form style={formStyle} onSubmit={this.onSubmit}>
+                <Form.Group>
+                    <Form.Label style={labelStyle}>Name</Form.Label>
+                    <Form.Control name="username" onChange={this.onChange} style={inputStyle} type="username" />
+                </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label style={labelStyle}>Email address</Form.Label>
-              <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
-            </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label style={labelStyle}>Email address</Form.Label>
+                  <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
+                </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label style={labelStyle}>Password</Form.Label>
-              <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
-            </Form.Group>
-            <Button style={submitStyle} type="submit">
-            <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign Up</Link>
-            </Button>
-          </Form>
-          <p style={signinStyle}>Already a user? <Link style={linkStyle} to={ROUTES.SIGNIN}>Sign In</Link></p>
-          <p style={signinStyle}>By signing up you're agreeing to all T&C</p>
-    </Jumbotron>
-
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label style={labelStyle}>Password</Form.Label>
+                  <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
+                </Form.Group>
+                <Button disabled={invalid} style={submitStyle} type="submit">
+                <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign Up</Link>
+                </Button>
+              </Form>
+              <p style={signinStyle}>Already a user? <Link style={linkStyle} to={ROUTES.SIGNIN}>Sign In</Link></p>
+              <p style={signinStyle}>By signing up you're agreeing to all T&C</p>
+        </Jumbotron>
+      </div>
     );
   }
 }
+
+const backgroundStyle = {
+  backgroundImage: 'url("/images/food.svg")',
+  backgroundSize: 'contain',
+  height: 900,
+  overflow: 'hidden'
+};
 
 const jumbotronStyle = {
   marginTop: 96,
@@ -128,7 +136,8 @@ const signinStyle = {
 
 const labelStyle = {
   fontSize: 13,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color: 'black'
 };
 
 const linkStyle = {
