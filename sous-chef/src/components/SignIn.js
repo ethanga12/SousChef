@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
  import { withFirebase } from './Firebase';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +16,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
+  error: true
 };
  
 class SignInFormBase extends Component {
@@ -27,15 +27,11 @@ class SignInFormBase extends Component {
   }
  
   onSubmit = event => {
-    const history = useHistory();
     const { username, email, password, error} = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
-        // this.setState({ ...INITIAL_STATE });
-        // return <Redirect to="/homepage"></Redirect>
-        // window.location.replace("/homepage");
-        // history.push("/homepage");
+        window.location("/")
       })
       .catch(error => {
         console.log(error);
@@ -46,45 +42,51 @@ class SignInFormBase extends Component {
   };
  
   onChange = event => {
-    console.log(event.target.name);
-    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state.email);
   };
  
   render() {
-    const { email, password, error } = this.state;
-    document.body.style = 'background: #EA655D'
+    console.log(this.state.email)
+    console.log(this.state.password)
+    const invalid = this.state.email == '' || this.state.password == '';
+    console.log(invalid)
     return (
-
-    <Jumbotron style={jumbotronStyle}>
-          <h1 style={welcomeTextStyle}>Good to see you back!</h1>
-          <Form style={formStyle} onSubmit={this.onSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label style={labelStyle}>Email address</Form.Label>
-              <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label style={labelStyle}>Password</Form.Label>
-              <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
-            </Form.Group>
-            <Button style={submitStyle} type="submit" >
-            <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
-            </Button>
-          </Form>
-          <p style={signupStyle}>Don't have an account yet? <Link style={linkStyle} to={ROUTES.SIGNUP}>Sign Up</Link></p>
-    </Jumbotron>
-
+    <div style={ backgroundStyle }>
+        <Jumbotron style={jumbotronStyle}>
+            <h1 style={welcomeTextStyle}>Good to see you back!</h1>
+            <Form style={formStyle} onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label style={labelStyle}>Email address</Form.Label>
+                <Form.Control name="email" onChange={this.onChange} style={inputStyle} type="email" />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                <Form.Label style={labelStyle}>Password</Form.Label>
+                <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
+                </Form.Group>
+                <Button disabled={invalid} style={submitStyle} type="submit" >
+                <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
+                </Button>
+            </Form>
+            <p style={signupStyle}>Don't have an account yet? <Link style={linkStyle} to={ROUTES.SIGNUP}>Sign Up</Link></p>
+        </Jumbotron>
+    </div>
     );
   }
 }
 
+const backgroundStyle = {
+    backgroundImage: 'url("/images/food.svg")',
+    backgroundSize: 'contain',
+    height: 900,
+    overflow: 'hidden'
+};
+
 const jumbotronStyle = {
-  marginTop: 96,
   marginLeft: 400,
   width:624,
   height:528,
-  backgroundColor: 'white'
+  backgroundColor: 'white',
+  marginTop: 96
 };
 
 const welcomeTextStyle = {
@@ -127,7 +129,8 @@ const signupStyle = {
 
 const labelStyle = {
   fontSize: 13,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color: 'black'
 };
 
 const linkStyle = {
