@@ -69,7 +69,7 @@ class SignUpFormBase extends Component {
               <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
             </Form.Group>
             <Button style={submitStyle} type="submit">
-              Sign Up
+            <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign Up</Link>
             </Button>
           </Form>
           <p style={signinStyle}>Already a user? <Link style={linkStyle} to={ROUTES.SIGNIN}>Sign In</Link></p>
@@ -133,7 +133,11 @@ const labelStyle = {
 
 const linkStyle = {
   color: '#EA655D'
-}
+};
+
+const submitlinkStyle = {
+  color: 'white'
+};
 
 const SignUpForm = withFirebase(SignUpFormBase);
  

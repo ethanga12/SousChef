@@ -1,10 +1,57 @@
-.recipe {
+.calendarDateContainer {
+  position: absolute;
+  background-color: #EA655D;
+  border-radius: 8px;
+  height: 55px;
+  width: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px  #EA655D solid;
+  z-index: 10000;
+}
+
+.calendarDateContainer:hover {
+  border: 2px white solid;
+}
+
+.calendarDate {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 200;
+  color: white;
+  font-size: 24px;
+  font-family: 'Open Sans';
+}
+
+.recipeSlide {
   background-color: white;
-  height: 200px;
+  margin-left: 5px;
+  margin-right: 5x;
+  margin-top: 20px;
+}
+
+.recipeImage {
+  height: 150px;
   width: 200px;
-  color: black;
-  margin-left: 20px;
-  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.recipeTitle {
+  width: 150px;
+  font-size: 16px;
+  font-family: 'Open Sans';
+}
+
+.recipeSummary {
+  width: 200px;
+  font-size: 12px;
+  font-family: 'Open Sans';
 }
 
 .recipeList {
@@ -12,41 +59,34 @@
   flex-wrap: wrap;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.side-bar {
+  position: absolute;
+  height: 100% !important;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-right: 1px solid;
+  border-radius: 0;
+  border-color: #DA564E;
+  background-color: #DA564E;
+  transition: 0.8s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.toggle-menu {
+  height: 50px;
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 9rem;
+  width: 10px;
+  position: absolute;
+  outline: none;
+  background-color: #DA564E;
+  border-color: #DA564E;
+  border-left: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#app-content {
+  z-index: 1;
+}
+
+#cal-sidebar {
+  z-index: -1;
 }

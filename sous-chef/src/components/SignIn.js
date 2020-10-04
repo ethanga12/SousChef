@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
  import { withFirebase } from './Firebase';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
@@ -27,11 +27,15 @@ class SignInFormBase extends Component {
   }
  
   onSubmit = event => {
+    const history = useHistory();
     const { username, email, password, error} = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        // this.setState({ ...INITIAL_STATE });
+        // return <Redirect to="/homepage"></Redirect>
+        // window.location.replace("/homepage");
+        // history.push("/homepage");
       })
       .catch(error => {
         console.log(error);
@@ -50,9 +54,9 @@ class SignInFormBase extends Component {
  
   render() {
     const { email, password, error } = this.state;
-
     document.body.style = 'background: #EA655D'
     return (
+
     <Jumbotron style={jumbotronStyle}>
           <h1 style={welcomeTextStyle}>Good to see you back!</h1>
           <Form style={formStyle} onSubmit={this.onSubmit}>
@@ -64,8 +68,8 @@ class SignInFormBase extends Component {
               <Form.Label style={labelStyle}>Password</Form.Label>
               <Form.Control name="password" onChange={this.onChange} style={inputStyle} type="password" />
             </Form.Group>
-            <Button style={submitStyle} type="submit">
-              Sign In
+            <Button style={submitStyle} type="submit" >
+            <Link style={submitlinkStyle} to={ROUTES.HOME}>Sign In</Link>
             </Button>
           </Form>
           <p style={signupStyle}>Don't have an account yet? <Link style={linkStyle} to={ROUTES.SIGNUP}>Sign Up</Link></p>
@@ -128,7 +132,11 @@ const labelStyle = {
 
 const linkStyle = {
   color: '#EA655D'
-}
+};
+
+const submitlinkStyle = {
+    color: 'white'
+};
 
 const SignInForm = withFirebase(SignInFormBase);
  
