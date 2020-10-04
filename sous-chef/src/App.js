@@ -12,7 +12,7 @@ import Homepage from './components/Homepage';
 import Sidebar from './components/Sidebar';
 import CalendarDate from './components/CalendarDate';
 import Responsive from './components/Responsive';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Tabs, Tab} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -35,15 +35,19 @@ function App() {
          </Sidebar>
         </Col>
         <Col sm={10} lg={10} md={10} xs={10}>
-        <div id="app-content" >
-        <Responsive  key="47" />
-        <Responsive key="48" />
-        <Responsive key="49" />
-      </div>
-        </Col>
-          </Row>
-          </Container>
-          <div id="fbase-router">
+          <Tabs defaultActiveKey="planner">
+            <Tab className="nav-tabs" eventKey="planner" title="Planner">
+              <div id="app-content" >
+          <Responsive  key="47" />
+          <Responsive key="48" />
+          <Responsive key="49" />
+        </div>
+            </Tab>
+            <Tab className="nav-tabs" eventKey="cv-upload" title="Upload Receipt">
+
+            </Tab>
+            <Tab className="nav-tabs" eventKey="sign-in" title="Sign In">
+            <div id="fbase-router">
       <Router>
       <Route path={ROUTES.SIGNIN} component={SignInPage} />
       <Route path={ROUTES.SIGNUP} component={SignUpPage} />
@@ -51,6 +55,11 @@ function App() {
       <Redirect from="/" to="/signin" />
     </Router>
     </div>
+            </Tab>
+          </Tabs>
+        </Col>
+          </Row>
+          </Container>
     </div>
   );
 }
