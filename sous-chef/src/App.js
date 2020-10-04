@@ -9,6 +9,9 @@ import * as ROUTES from './constants/routes';
 import SignUpPage from './components/SignUp';
 import SignInPage from './components/SignIn';
 import Homepage from './components/Homepage';
+import Sidebar from './components/Sidebar';
+import CalendarDate from './components/CalendarDate';
+import Responsive from './components/Responsive';
 
 function App() {
   
