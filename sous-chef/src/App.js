@@ -12,13 +12,19 @@ import Homepage from './components/Homepage';
 import Sidebar from './components/Sidebar';
 import CalendarDate from './components/CalendarDate';
 import Responsive from './components/Responsive';
+import { Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   
   return (
     <div className="App">
       <div id="cal-sidebar">
-        <Sidebar width={100}>
+      </div>
+        <Container>
+          <Row>
+            <Col sm={2} lg={2} md={2} xs={2}>    
+            <Sidebar width={100}>
           <CalendarDate key="35" date="10" />
           <CalendarDate key="36" date="11" />
           <CalendarDate key="30" date="12" />
@@ -26,19 +32,25 @@ function App() {
           <CalendarDate key="41" date="14" />
           <CalendarDate key="42" date="15" />
           <CalendarDate key="45" date="16" />
-        </Sidebar>
-      </div>
-      <div id="app-content" >
+         </Sidebar>
+        </Col>
+        <Col sm={10} lg={10} md={10} xs={10}>
+        <div id="app-content" >
         <Responsive  key="47" />
         <Responsive key="48" />
         <Responsive key="49" />
       </div>
+        </Col>
+          </Row>
+          </Container>
+          <div id="fbase-router">
       <Router>
       <Route path={ROUTES.SIGNIN} component={SignInPage} />
       <Route path={ROUTES.SIGNUP} component={SignUpPage} />
       <Route path={ROUTES.HOME} component={Homepage} />
       <Redirect from="/" to="/signin" />
     </Router>
+    </div>
     </div>
   );
 }
